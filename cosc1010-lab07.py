@@ -5,7 +5,7 @@
 # Lab Section: 16
 # Sources, people worked with, help given to: 
 # Python Crash Course, 3rd Edition
-
+# Repit AI (only to help me find my issue)
 
 # Prompt the user for an upper bound 
 # Write a while loop that gives the factorial of that upper bound
@@ -14,8 +14,19 @@
     # To do so you can use the methods `.isdigit()` or `.isnumeric()`
     # If a user did not enter a number output a statement saying so
 # You will continue to prompt the user until a proper integer value is entered
+while True:
+    try:
+        number = int(input("Enter a positive number for an upper bound: "))
+        if number > 0:
+            break  # Exit the loop if the number is positive
+        else:
+            print("Please enter a positive number.")
+    except ValueError:
+        print("Invalid input. Please enter a number.")
 
 factorial = 1
+for i in range(1, number + 1):
+    factorial *= i
 
 print(f"The result of the factorial based on the given bound is {factorial}")
 
@@ -36,7 +47,15 @@ print("*"*75)
 # The sum should start at 0 
 
 num_sum = 0 
-
+while True:
+    user_input = input("Enter an integer (or 'exit'): ")
+    if user_input.lower() == 'exit':
+        break 
+    try:
+        number = int(user_input)
+        num_sum += number
+    except ValueError:
+        print("Invalid input. Please enter an integer or 'exit'.")
 print(f"Your final sum is {num_sum}")
 
 print("*"*75)
@@ -56,5 +75,64 @@ print("*"*75)
     # So, it should function the same for `5 + 6` as `5+6`
 # Print the result of the equation
 # Again, loop through prompting the user for input until `exit` in any casing is input 
-
-        
+import operator
+while True:
+    expression = input("Enter a mathematical expression (or 'exit'): ")
+    if expression.lower() == 'exit':
+        break
+    try:
+        expression = expression.replace(" ", "")
+        parts = list(expression)
+        operators = {'+': operator.add, '-': operator.sub, '*': operator.mul, '/': operator.truediv, '%': operator.mod}
+        result = None
+        i = 0
+        while i < len(parts):
+            if parts[i] in operators:
+                operator_func = operators.get(parts[i])
+                if operator_func:
+                    i += 1
+                    if result is None:
+                        print("Invalid operator:", parts[i - 1])
+                        break
+                    else:
+                        number_str = parts[i]
+                        i += 1
+                        decimal_count = 0
+                        while i < len(parts) and (parts[i].isalnum() or parts[i] == '.'):
+                            if parts[i] == '.':
+                                decimal_count += 1
+                                if decimal_count > 1:
+                                    print("Invalid number format:", number_str)
+                                    break
+                            number_str += parts[i]
+                            i += 1
+                        result = operator_func(result, float(number_str))
+                else:
+                    print("Invalid operator:", parts[i])
+                    break
+            elif parts[i].isalnum() or parts[i] == '.':
+                number_str = parts[i]
+                i += 1
+                decimal_count = 0
+                while i < len(parts) and (parts[i].isalnum() or parts[i] == '.'):
+                    if parts[i] == '.':
+                        decimal_count += 1
+                        if decimal_count > 1:
+                            print("Invalid number format:", number_str)
+                            break
+                    number_str += parts[i]
+                    i += 1
+                if result is None:
+                    result = float(number_str)
+                else:
+                    print("Invalid operator:", parts[i - 1])
+                    break
+            else:
+                print("Invalid operator:", parts[i])
+                break 
+        if result is not None:
+            print(f"{expression} = {result}")
+    except ValueError:
+        print("Invalid input. Please enter a valid expression (e.g., 5+6).")
+    except ZeroDivisionError:
+        print("Error: Division by zero")
