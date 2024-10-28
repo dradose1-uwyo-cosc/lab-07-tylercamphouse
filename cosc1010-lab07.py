@@ -1,12 +1,10 @@
-# Your Name Here
+# Tyler Camphouse
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section: 
+# Submission Date 10/28/2024
+# Lab 07
+# Lab Section: 16
 # Sources, people worked with, help given to: 
-# your
-# comments
-# here
+# Python Crash Course, 3rd Edition
 
 
 # Prompt the user for an upper bound 
