@@ -21,7 +21,7 @@ while True:
             break
         elif number.isdigit() == False:
             print("Please enter a positive number.")
-    except ValueError:
+    except:
         print("Invalid input. Please enter a number.")
 
 factorial = 1
@@ -52,11 +52,11 @@ while True:
     if user_input.lower() == 'exit':
         break 
     elif user_input.isdigit() == False:
-            print("Please enter a positive number.")
+            print(" Please enter a positive number.")
     try:
         number = int(user_input)
         num_sum += number
-    except ValueError:
+    except:
         print("Invalid input. Please enter an integer or 'exit'.")
 print(f"Your final sum is {num_sum}")
 
@@ -134,7 +134,5 @@ while True:
                 break 
         if result is not None:
             print(f"{expression} = {result}")
-    except ValueError:
+    except:
         print("Invalid input. Please enter a valid expression.")
-    except ZeroDivisionError:
-        print("Error: Division by zero")
