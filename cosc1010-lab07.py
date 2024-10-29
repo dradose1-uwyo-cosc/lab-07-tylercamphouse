@@ -18,8 +18,8 @@ while True:
     try:
         number = int(input("Enter a positive number for an upper bound: "))
         if number > 0:
-            break  # Exit the loop if the number is positive
-        else:
+            break
+        elif number.isdigit() == False:
             print("Please enter a positive number.")
     except ValueError:
         print("Invalid input. Please enter a number.")
@@ -51,6 +51,8 @@ while True:
     user_input = input("Enter an integer (or 'exit'): ")
     if user_input.lower() == 'exit':
         break 
+    elif user_input.isdigit() == False:
+            print("Please enter a positive number.")
     try:
         number = int(user_input)
         num_sum += number
@@ -133,6 +135,6 @@ while True:
         if result is not None:
             print(f"{expression} = {result}")
     except ValueError:
-        print("Invalid input. Please enter a valid expression (e.g., 5+6).")
+        print("Invalid input. Please enter a valid expression.")
     except ZeroDivisionError:
         print("Error: Division by zero")
